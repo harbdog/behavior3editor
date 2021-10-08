@@ -29,6 +29,10 @@ b3e.editor.SelectionSystem = function(editor) {
     var y = point.y;
     var block = tree.blocks.getUnderPoint(x, y);
 
+    if (block && block._isSelected && block.category === 'tree') {
+      project.trees.select(block.name);
+    }
+
     if (block && block._isSelected && ctrl) {
       if (alt) {
         tree.selection.deselectSubtree(block);
