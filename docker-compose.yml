@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  behavior3editor:
+    build:
+      context: .
+    image: 3rdparty:behavior3editor
+
