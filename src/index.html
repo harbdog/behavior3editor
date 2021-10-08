@@ -54,5 +54,19 @@
 <script>preloadProgress('Loading templates...');</script>
 <script type="text/javascript" src="js/templates.min.js"></script>
 
-<script>preloadProgress('Starting application... Have Fun!');</script>
-<script>startApp();</script>
+<script>preloadProgress('Loading projects...');</script>
+<script type="text/javascript">
+async function init() {
+  var url = "https://api.falcons-robocup.nl/v1/behaviors/projects";
+  var data = await fetch(url, {'credentials': 'include'}).then(function(r) {return r.json();});
+
+  for (var key of Object.keys(data)) {
+    window.localStorage[key] = JSON.stringify(data[key]);
+  }
+
+  preloadProgress('Starting application... Have Fun!');
+  startApp();
+}
+
+init();
+</script>
