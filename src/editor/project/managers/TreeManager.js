@@ -76,6 +76,9 @@ b3e.project.TreeManager = function(editor, project) {
       editor.trigger('treedeselected', project._selectedTree);
     }
     
+    tree.organize.organize();
+    tree.view.alignTop();
+
     tree.visible = true;
     project._selectedTree = tree;
     editor.trigger('treeselected', tree);

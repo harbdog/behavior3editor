@@ -52,6 +52,7 @@
     $scope.$on('$destroy', _destroy);
 
     function _activate() {
+      onAutoOrganize();
     }
 
     function _shortcut_projectclose(f) {
@@ -227,6 +228,7 @@
     function onAutoOrganize() {
       var tree = _getTree();
       tree.organize.organize();
+      tree.view.alignTop();
       return false;
     }
     function onZoomIn() {

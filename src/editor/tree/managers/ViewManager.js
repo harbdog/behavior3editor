@@ -41,6 +41,12 @@ b3e.tree.ViewManager = function(editor, project, tree) {
     var hh = canvas.height/2;
     this.setCam(hw, hh);
   };
+  this.alignTop = function() {
+    var canvas = editor._game.canvas;
+    var hw = canvas.width/2;
+    var hh = canvas.height/8;
+    this.setCam(hw, hh);
+  };
   this.getLocalPoint = function(x, y) {
     if (typeof x == 'undefined') x = editor._game.mouse.x;
     if (typeof y == 'undefined') y = editor._game.mouse.y;
