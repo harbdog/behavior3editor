@@ -57,7 +57,7 @@
 <script>preloadProgress('Loading projects...');</script>
 <script type="text/javascript">
 async function init() {
-  var url = "https://api.falcons-robocup.nl/v1/behaviors/projects";
+  var url = (new URLSearchParams(location.search)).get('loadUrl');
   var data = await fetch(url, {'credentials': 'include'}).then(function(r) {return r.json();});
 
   for (var key of Object.keys(data)) {
