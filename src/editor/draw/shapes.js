@@ -87,11 +87,15 @@
   b3e.draw.compositeShape = function(block, settings) {
     var bounds = block._displaySymbol.getBounds();
     var _width = 0;
+    var _height = 0;
 
-    if (bounds) { _width = bounds.width+20; }
+    if (bounds) {
+      _width = bounds.width+20;
+      _height = bounds.height+20;
+    }
 
     var w = Math.max(_width, block._width);
-    var h = block._height;
+    var h = Math.max(_height, block._height);
     var anchorOffsetX = settings.get('anchor_offset_x');
     var shape = block._displayShape;
     block._width = w;
