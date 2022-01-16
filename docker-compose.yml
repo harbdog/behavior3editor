@@ -5,4 +5,7 @@ services:
     build:
       context: .
     image: 3rdparty:behavior3editor
-
+    volumes:
+      - ./src:/home/node/src
+    ports:
+      - "8000:8000"

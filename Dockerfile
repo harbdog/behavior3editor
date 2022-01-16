@@ -5,10 +5,14 @@ RUN apk update && apk add git curl
 USER node
 WORKDIR /home/node
 
-COPY . .
+COPY *.json *.js ./
 
 RUN npm install           \
     && npm install bower  \
-    && npx bower install  \
-    && npx gulp build
+    && npx bower install
 
+COPY . .
+
+RUN npx gulp build
+
+ENTRYPOINT npx gulp serve
