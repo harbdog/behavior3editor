@@ -118,6 +118,26 @@
   };
 
   b3e.draw.textSymbol = function(block, settings) {
+    var container = new createjs.Container();
+
+    var text = b3e.draw.textSymbolText(block, settings);
+    container.addChild(text);
+
+    var props = b3e.draw.textSymbolProperties(block, settings);
+    if (props) {
+      var propBounds = props.getBounds();
+      var textBounds = text.getBounds();
+
+      props.y = propBounds.height/2;
+
+      container.addChild(props);
+      container.y = textBounds.height/4 - propBounds.height/2;
+    }
+
+    return container;
+  };
+
+  b3e.draw.textSymbolText = function(block, settings) {
     var text = new createjs.Text(
         block.getTitle(),
         '18px Arial',
@@ -134,6 +154,27 @@
     return text;
   };
 
+  b3e.draw.textSymbolProperties = function(block, settings) {
+    var propText = block.getProperties();
+
+    // EaselJS breaks whenever we create a Text using an empty string
+    if (propText == "") {
+      return null;
+    }
+
+    var text = new createjs.Text(
+        propText,
+        '12px Arial',
+        settings.get('block_symbol_color')
+    );
+    text.textAlign = 'left';
+
+    var bounds = text.getBounds();
+    text.regY = bounds.height/2;
+    text.x -= bounds.width/2;
+
+    return text;
+  };
 
   b3e.draw.SYMBOLS = {
     'Root'        : b3e.draw.rootSymbol,

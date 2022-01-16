@@ -286,6 +286,21 @@
     });
   };
 
+  p.getProperties = function() {
+    var s = "";
+
+    var keys = Object.keys(this.properties);
+    var values = Object.values(this.properties);
+
+    for (var i=0; i < keys.length; i++) {
+      var key = keys[i];
+      var value = values[i];
+      s += "\n" + key + ": " + value;
+    }
+
+    return s;
+  };
+
   /**
    * Runs a traversal over the subtree which this block is root.
    *
