@@ -55,6 +55,7 @@
 
     function _activate() {
       onAutoOrganize();
+      $window.editor.clearDirty();
     }
 
     function _shortcut_projectclose(f) {
