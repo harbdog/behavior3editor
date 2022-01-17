@@ -1,6 +1,7 @@
 b3e.editor.SelectionSystem = function(editor) {
   "use strict";
 
+  var treeHistory = [];
   var isSelecting = false;
   var ctrl = false;
   var shift = false;
@@ -30,7 +31,12 @@ b3e.editor.SelectionSystem = function(editor) {
     var block = tree.blocks.getUnderPoint(x, y);
 
     if (block && block._isSelected && block.category === 'tree') {
+      treeHistory.push(tree._id);
       project.trees.select(block.name);
+    }
+
+    if (block && block._isSelected && block.category === 'root') {
+      project.trees.select(treeHistory.pop());
     }
 
     if (block && block._isSelected && ctrl) {
