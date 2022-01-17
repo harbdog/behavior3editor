@@ -41,6 +41,19 @@ b3e.tree.ViewManager = function(editor, project, tree) {
     var hh = canvas.height/2;
     this.setCam(hw, hh);
   };
+  this.align = function() {
+    if (editor._settings.get('layout') === 'horizontal') {
+      this.alignLeft();
+    } else {
+      this.alignTop();
+    }
+  };
+  this.alignLeft = function() {
+    var canvas = editor._game.canvas;
+    var hw = canvas.width/8;
+    var hh = canvas.height/2;
+    this.setCam(hw, hh);
+  };
   this.alignTop = function() {
     var canvas = editor._game.canvas;
     var hw = canvas.width/2;

@@ -77,7 +77,7 @@ b3e.project.TreeManager = function(editor, project) {
     }
     
     tree.organize.organize();
-    tree.view.alignTop();
+    tree.view.align();
 
     tree.visible = true;
     project._selectedTree = tree;

@@ -228,7 +228,7 @@
     function onAutoOrganize() {
       var tree = _getTree();
       tree.organize.organize();
-      tree.view.alignTop();
+      tree.view.align();
       return false;
     }
     function onZoomIn() {
