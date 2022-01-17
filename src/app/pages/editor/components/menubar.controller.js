@@ -41,11 +41,13 @@
     vm.onRemoveInConns     = onRemoveInConns;
     vm.onRemoveOutConns    = onRemoveOutConns;
     vm.onAutoOrganize      = onAutoOrganize;
+    vm.onToggleSidebars    = onToggleSidebars;
     vm.onZoomIn            = onZoomIn;
     vm.onZoomOut           = onZoomOut;
     vm.onSelectAll         = onSelectAll;
     vm.onDeselectAll       = onDeselectAll;
     vm.onInvertSelection   = onInvertSelection;
+    vm.showSidebars = false;
 
     _create();
     _activate();
@@ -71,6 +73,13 @@
       }
       return false;
     }
+    function _shortcut_togglesidebars() {
+      if (!$scope.$$phase) {
+        $scope.$apply(function() { onToggleSidebars(); });
+      } else {
+        onToggleSidebars();
+      }
+    }
     function _create() {
       Mousetrap.bind('ctrl+q', _shortcut_projectclose);
       Mousetrap.bind('ctrl+s', _shortcut_projectsave);
@@ -82,6 +91,7 @@
       Mousetrap.bind('ctrl+d', onDuplicate);
       Mousetrap.bind('del', onRemove);
       Mousetrap.bind('a', onAutoOrganize);
+      Mousetrap.bind('b', _shortcut_togglesidebars);
       Mousetrap.bind('ctrl+a', onSelectAll);
       Mousetrap.bind('ctrl+shift+a', onDeselectAll);
       Mousetrap.bind('ctrl+i', onInvertSelection);
@@ -97,6 +107,7 @@
       Mousetrap.unbind('ctrl+d', onDuplicate);
       Mousetrap.unbind('del', onRemove);
       Mousetrap.unbind('a', onAutoOrganize);
+      Mousetrap.unbind('b', _shortcut_togglesidebars);
       Mousetrap.unbind('ctrl+a', onSelectAll);
       Mousetrap.unbind('ctrl+shift+a', onDeselectAll);
       Mousetrap.unbind('ctrl+i', onInvertSelection);
@@ -229,6 +240,10 @@
       var tree = _getTree();
       tree.organize.organize();
       tree.view.align();
+      return false;
+    }
+    function onToggleSidebars() {
+      vm.showSidebars = !vm.showSidebars;
       return false;
     }
     function onZoomIn() {

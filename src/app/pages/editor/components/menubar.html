@@ -1,4 +1,4 @@
-<nav class="menubar" ng-controller="MenubarController as menubar">
+<nav class="menubar">
   <div class="menubar-left">
     <div class="side">
       <ul>
@@ -113,6 +113,10 @@
           <li><a ng-click="menubar.onAutoOrganize()">
             Auto organize
             <span class="shortcut">a</span>
+          </a></li>
+          <li><a ng-click="menubar.onToggleSidebars()">
+            Toggle sidebars
+            <span class="shortcut">b</span>
           </a></li>
           <li class="divider"></li>
           <li><a ng-click="menubar.onZoomIn()">
