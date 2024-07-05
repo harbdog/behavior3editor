@@ -1,5 +1,8 @@
 # BEHAVIOR3EDITOR
 
+This tool is forked from <https://git.falcons-robocup.nl/3rdparty/behavior3editor>
+based on the existing [Behavior3 Editor](https://github.com/behavior3/behavior3editor/).
+
 ![interface preview](preview.png)
 
 **Behavior3 Editor** is the official visual editor for the **Behavior3** libraries. It can be accessed online or you can download it to have handle local projects.
@@ -45,4 +48,3 @@ Nothing is perfect =( . Behavior3 Editor focus on Chrome (thus, working pretty w
 
 - https://github.com/behavior3/behavior3js
 - https://github.com/behavior3/behavior3py
-
